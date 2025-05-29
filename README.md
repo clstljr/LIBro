@@ -1,15 +1,16 @@
 CREATE DATABASE IF NOT EXISTS library_db;
+
 USE library_db;
 
--- Users Table
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL
+    email VARCHAR(100) NOT NULL UNIQUE,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    address VARCHAR(255),
+    phone VARCHAR(20)
 );
 
--- Books Table
 CREATE TABLE books (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -21,7 +22,6 @@ CREATE TABLE books (
     FOREIGN KEY (uploaded_by) REFERENCES users(id)
 );
 
--- Purchases Table
 CREATE TABLE purchases (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
