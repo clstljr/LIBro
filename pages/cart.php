@@ -45,7 +45,7 @@ $result = $stmt->get_result();
 <html>
 <head>
     <title>Your Cart</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../assets/css/cart.css">
 </head>
 <body>
 <div class="container">
