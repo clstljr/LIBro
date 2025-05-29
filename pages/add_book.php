@@ -20,7 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Handle image upload
     $image_name = null;
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+        $allowed = ['jpg', 'jpeg', 'png', 'g        <?php
+        if (!is_dir(__DIR__ . "/../uploads")) {
+            mkdir(__DIR__ . "/../uploads", 0755, true); // Use 0755 for better security
+        }
+        
+        $stmt->bind_param("sssdsi", $title, $author, $description, $price, $image_name, $uploaded_by);if'];
         $file_ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
         if (in_array($file_ext, $allowed)) {
             $image_name = uniqid() . "." . $file_ext;
