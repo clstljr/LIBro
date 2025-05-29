@@ -86,21 +86,22 @@ $cartResult->data_seek(0);
     <style>
       .checkout-section {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 80vh;
+        flex-direction: row;
+        align-items: flex-start;
         justify-content: center;
+        min-height: 70vh;
         background: #f8f9fa;
-        padding: 40px 0 60px 0;
+        gap: 32px;
+        padding: 40px 0 0 0;
       }
       .checkout-form {
         background: #fff;
         border-radius: 16px;
         box-shadow: 0 4px 24px rgba(0,0,0,0.08);
         padding: 32px 32px 24px 32px;
-        max-width: 600px;
+        max-width: 350px;
         width: 100%;
-        margin-bottom: 32px;
+        margin-bottom: 0;
       }
       .checkout-form h2 {
         margin-bottom: 18px;
@@ -129,19 +130,27 @@ $cartResult->data_seek(0);
         border-radius: 16px;
         box-shadow: 0 4px 24px rgba(0,0,0,0.08);
         padding: 24px 24px 16px 24px;
-        max-width: 700px;
+        max-width: 420px;
         width: 100%;
-        margin-bottom: 32px;
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
       .order-summary h3 {
         margin-bottom: 16px;
         color: #2d3a4b;
         font-size: 1.3rem;
       }
+      .order-summary-table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+      }
       .order-summary table {
         width: 100%;
         border-collapse: collapse;
         margin-bottom: 10px;
+        background: #fff;
       }
       .order-summary th, .order-summary td {
         border: 1px solid #e5e7eb;
@@ -156,28 +165,34 @@ $cartResult->data_seek(0);
       .order-summary img {
         max-width: 60px;
         border-radius: 6px;
+        display: block;
+        margin: 0 auto;
       }
       .order-summary .total-row th, .order-summary .total-row td {
         font-weight: bold;
         font-size: 1.1rem;
         background: #f0f4f8;
       }
+      .checkout-btn-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 32px 0 48px 0;
+      }
       .checkout-btn {
-        display: block;
-        width: 100%;
         background: #2d3a4b;
         color: #fff;
         border: none;
         border-radius: 6px;
-        padding: 12px 0;
+        padding: 14px 48px;
         font-size: 1.1rem;
         font-weight: 600;
         cursor: pointer;
-        margin-top: 18px;
         transition: background 0.2s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
       }
       .checkout-btn:hover {
-        background: #1a2230;
+        background:rgb(170, 52, 194);
       }
       .back-link {
         display: inline-block;
@@ -188,11 +203,146 @@ $cartResult->data_seek(0);
         transition: color 0.2s;
       }
       .back-link:hover {
-        color: #007bff;
+        color:rgb(141, 1, 223);
       }
-      @media (max-width: 700px) {
+      /* Footer Styles */
+      footer {
+        background:rgb(255, 255, 255);
+        color: #fff;
+        padding: 32px 0 16px 0;
+        margin-top: 40px;
+      }
+      .logo-description {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+      .logo .img {
+        font-size: 2.5rem;
+        color: #a084e8;
+      }
+      .logo .title h4 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fff;
+      }
+      .logo-body {
+        text-align: center;
+        margin-bottom: 16px;
+      }
+      .logo-body p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #e0e7ff;
+      }
+      .social-links {
+        margin-top: 8px;
+      }
+      .social-links h4 {
+        margin: 0 0 8px 0;
+        font-size: 1rem;
+        color: #fff;
+        text-align: center;
+      }
+      .social-links .links {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .social-links .links li a {
+        color: #a084e8;
+        font-size: 1.2rem;
+        transition: color 0.2s;
+      }
+      .social-links .links li a:hover {
+        color: #fff;
+      }
+      .categories, .quick-links, .our-store {
+        max-width: 300px;
+        width: 100%;
+        margin: 0 auto 24px auto;
+      }
+      .categories h4, .quick-links h4, .our-store h4 {
+        margin-bottom: 12px;
+        font-size: 1.2rem;
+        color: #fff;
+        text-align: center;
+      }
+      .categories ul, .quick-links ul, .our-store ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        color: #e0e7ff;
+        font-size: 0.9rem;
+      }
+      .categories ul li, .quick-links ul li, .our-store ul li {
+        margin-bottom: 8px;
+      }
+      .categories ul li a, .quick-links ul li a, .our-store ul li a {
+        color: #a084e8;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .categories ul li a:hover, .quick-links ul li a:hover, .our-store ul li a:hover {
+        color: #fff;
+      }
+      .our-store .map {
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 12px;
+      }
+      .our-store ul {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .our-store ul li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #e0e7ff;
+      }
+      .our-store ul li i {
+        color: #a084e8;
+      }
+      .footer-copy {
+        margin-top: 10px;
+        font-size: 0.95rem;
+        color: #bfc9d1;
+        text-align: center;
+      }
+      @media (max-width: 900px) {
+        .checkout-section {
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+        }
         .checkout-form, .order-summary {
-          padding: 16px 6px;
+          max-width: 95vw;
+        }
+        .checkout-btn-wrapper {
+          margin: 24px 0 32px 0;
+        }
+        .footer-container {
+          padding: 0 10px;
+        }
+        .logo-description {
+          text-align: center;
+        }
+        .categories, .quick-links, .our-store {
+          max-width: 100%;
         }
       }
     </style>
@@ -215,7 +365,7 @@ $cartResult->data_seek(0);
       </div>
     </nav>
   </header>
-  <section class="checkout-section">
+  <section class="checkout-section split-layout">
     <form class="checkout-form" method="post">
       <h2>Checkout</h2>
       <a href="cart.php" class="back-link"><i class="fa fa-arrow-left"></i> Back to Cart</a>
@@ -229,8 +379,10 @@ $cartResult->data_seek(0);
         <label for="phone"><strong>Phone:</strong></label>
         <input type="text" name="phone" id="phone" value="<?= htmlspecialchars($userInfo['phone']) ?>" required>
       </div>
-      <div class="order-summary">
-        <h3>Order Summary</h3>
+    </form>
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <div class="order-summary-table-wrapper">
         <table>
           <tr>
             <th>Book</th>
@@ -242,6 +394,7 @@ $cartResult->data_seek(0);
           </tr>
           <?php
           $total = 0;
+          $cartResult->data_seek(0);
           while ($row = $cartResult->fetch_assoc()):
               $subtotal = $row['price'] * $row['quantity'];
               $total += $subtotal;
@@ -261,9 +414,13 @@ $cartResult->data_seek(0);
           </tr>
         </table>
       </div>
+    </div>
+  </section>
+  <div class="checkout-btn-wrapper">
+    <form method="post" style="display:inline;">
       <button type="submit" name="confirm_checkout" class="checkout-btn">Confirm and Checkout</button>
     </form>
-  </section>
+  </div>
   <footer>
     <div class="container">
       <div class="logo-description">
@@ -300,17 +457,6 @@ $cartResult->data_seek(0);
             </li>
           </ul>
         </div>
-      </div>
-      <div class="categories list">
-        <h4>Book Categories</h4>
-        <ul>
-          <li><a href="#">TODO</a></li>
-          <li><a href="#">TODO</a></li>
-          <li><a href="#">TODO</a></li>
-          <li><a href="#">TODO</a></li>
-          <li><a href="#">TODO</a></li>
-          <li><a href="#">TODO</a></li>
-        </ul>
       </div>
       <div class="quick-links list">
         <h4>Quick Links</h4>
