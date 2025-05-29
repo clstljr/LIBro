@@ -10,11 +10,11 @@ if (!isset($_SESSION["user_id"])) {
 $user_id = $_SESSION["user_id"];
 
 // Fetch purchases with quantity
-$sql = "SELECT p.purchase_date, b.title, b.author, b.price, b.image, p.quantity 
-        FROM purchases p 
-        JOIN books b ON p.book_id = b.id 
-        WHERE p.user_id = ? 
-        ORDER BY p.purchase_date DESC";
+$sql = "SELECT p.id AS purchase_id, b.title, b.author, b.price, b.image, p.quantity, p.purchase_date, p.address, p.phone
+    FROM purchases p
+    JOIN books b ON p.book_id = b.id
+    WHERE p.user_id = ?
+    ORDER BY p.purchase_date DESC;";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
@@ -46,20 +46,28 @@ $stmt->close();
             <table border="1" cellpadding="10">
                 <tr>
                     <th>Book</th>
+                    <th>Name</th>
                     <th>Author</th>
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total Price</th>
                     <th>Purchase Date</th>
+                    <th>Address</th>
+                    <th>Phone</th>
                 </tr>
                 <?php foreach ($purchases as $p): ?>
                 <tr>
+                    <td>
+                        <img src="/LIBro/uploads/<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['title']) ?>" width="50">
+                    </td>
                     <td><?= htmlspecialchars($p['title']) ?></td>
                     <td><?= htmlspecialchars($p['author']) ?></td>
                     <td>₱<?= number_format($p['price'], 2) ?></td>
                     <td><?= $p['quantity'] ?></td>
                     <td>₱<?= number_format($p['price'] * $p['quantity'], 2) ?></td>
                     <td><?= $p['purchase_date'] ?></td>
+                    <td><?= htmlspecialchars($p['address']) ?></td>
+                    <td><?= htmlspecialchars($p['phone']) ?></td>
                 </tr>
                 <?php endforeach; ?>
             </table>

@@ -106,6 +106,7 @@ $cartResult->data_seek(0);
         <table>
             <tr>
                 <th>Book</th>
+                <th>Name</th>
                 <th>Author</th>
                 <th>Price</th>
                 <th>Quantity</th>
@@ -118,6 +119,9 @@ $cartResult->data_seek(0);
                 $total += $subtotal;
             ?>
             <tr>
+                <td>
+                    <img src="/LIBro/uploads/<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['title']) ?>" width="50">
+                </td>
                 <td><?= htmlspecialchars($row['title']) ?></td>
                 <td><?= htmlspecialchars($row['author']) ?></td>
                 <td>₱<?= number_format($row['price'], 2) ?></td>
@@ -126,7 +130,7 @@ $cartResult->data_seek(0);
             </tr>
             <?php endwhile; ?>
             <tr>
-                <th colspan="4" style="text-align:right">Total:</th>
+                <th colspan="5" style="text-align:right">Total:</th>
                 <th>₱<?= number_format($total, 2) ?></th>
             </tr>
         </table>

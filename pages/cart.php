@@ -54,8 +54,8 @@ $result = $stmt->get_result();
 
     <table border="1" cellpadding="10">
         <tr>
-            <!-- Remove the Image column header -->
             <th>Book</th>
+            <th>Name</th>
             <th>Price</th>
             <th>Qty</th>
             <th>Subtotal</th>
@@ -69,7 +69,9 @@ $result = $stmt->get_result();
             $total += $subtotal;
         ?>
         <tr>
-            <!-- Remove the Image cell -->
+            <td>
+                <img src="/LIBro/uploads/<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['title']) ?>" width="50">
+            </td>
             <td><?= htmlspecialchars($row['title']) ?></td>
             <td>₱<?= number_format($row['price'], 2) ?></td>
             <td>

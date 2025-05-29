@@ -34,7 +34,7 @@ while ($row = $result->fetch_assoc()) {
             <?php foreach ($books as $book): ?>
                 <div class="book-item">
                     <?php if ($book['image']): ?>
-                        <img src="uploads/<?= htmlspecialchars($book['image']) ?>" width="100"><br>
+                        <img src="/LIBro/uploads/<?= htmlspecialchars($book['image']) ?>" width="100"><br>
                     <?php endif; ?>
                     <strong><?= htmlspecialchars($book['title']) ?></strong><br>
                     by <?= htmlspecialchars($book['author']) ?><br>

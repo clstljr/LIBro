@@ -35,6 +35,8 @@ Step 3: Paste the following SQL code into the textbox:
         user_id INT,
         book_id INT,
         quantity INT, 
+        address VARCHAR(255),
+        phone VARCHAR(20),
         purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
         FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
