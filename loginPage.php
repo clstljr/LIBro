@@ -72,7 +72,7 @@
         </div>
         <div class="logo-body">
           <p>
-            LIbro is a TODO
+            Feed Your Mind, Anytime, Anywhere.
           </p>
         </div>
         <div class="social-links">
@@ -95,17 +95,6 @@
             </li>
           </ul>
         </div>
-      </div>
-      <div class="categories list">
-        <h4>Book Categories</h4>
-        <ul>
-          <li><a href="#">TODO</a></li>
-          <li><a href="#">TODO</a></li>
-          <li><a href="#">TODO</a></li>
-          <li><a href="#">TODO</a></li>
-          <li><a href="#">TODO</a></li>
-          <li><a href="#">TODO</a></li>
-        </ul>
       </div>
       <div class="quick-links list">
         <h4>Quick Links</h4>

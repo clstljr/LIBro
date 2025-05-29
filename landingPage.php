@@ -196,7 +196,7 @@
         </div>
         <div class="logo-body">
           <p>
-            LIbro is a TODO
+            Feed Your Mind, Anytime, Anywhere.
           </p>
         </div>
         <div class="social-links">

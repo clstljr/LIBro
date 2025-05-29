@@ -129,10 +129,10 @@ $cartResult->data_seek(0);
         background: #fff;
         border-radius: 16px;
         box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-        padding: 24px 24px 16px 24px;
+        padding: 28px 28px 18px 28px;
         max-width: 420px;
         width: 100%;
-        margin-bottom: 0;
+        margin-bottom: 32px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -142,36 +142,67 @@ $cartResult->data_seek(0);
         color: #2d3a4b;
         font-size: 1.3rem;
       }
-      .order-summary-table-wrapper {
+      .order-summary-list {
         width: 100%;
-        overflow-x: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
       }
-      .order-summary table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 10px;
-        background: #fff;
+      .order-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        background: #f7f7fa;
+        border-radius: 10px;
+        padding: 14px 16px;
+        box-shadow: 0 1px 4px rgba(108,93,212,0.04);
+        position: relative;
       }
-      .order-summary th, .order-summary td {
-        border: 1px solid #e5e7eb;
-        padding: 10px 8px;
-        text-align: left;
-        font-size: 1rem;
+      .order-item-img img {
+        width: 60px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       }
-      .order-summary th {
-        background: #f5f6fa;
+      .order-item-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .order-item-title {
+        font-size: 1.08rem;
+        font-weight: 600;
         color: #2d3a4b;
       }
-      .order-summary img {
-        max-width: 60px;
-        border-radius: 6px;
-        display: block;
-        margin: 0 auto;
+      .order-item-author {
+        font-size: 0.95rem;
+        color: #6c5dd4;
+        font-style: italic;
       }
-      .order-summary .total-row th, .order-summary .total-row td {
-        font-weight: bold;
-        font-size: 1.1rem;
-        background: #f0f4f8;
+      .order-item-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 6px;
+        font-size: 0.98rem;
+        color: #444;
+      }
+      .order-item-subtotal {
+        font-weight: 600;
+        color: #2d3a4b;
+      }
+      .order-summary-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #2d3a4b;
+        border-top: 2px solid #ececec;
+        padding-top: 16px;
+        margin-top: 10px;
       }
       .checkout-btn-wrapper {
         display: flex;
@@ -180,7 +211,7 @@ $cartResult->data_seek(0);
         margin: 32px 0 48px 0;
       }
       .checkout-btn {
-        background: #2d3a4b;
+        background: #6c5dd4;
         color: #fff;
         border: none;
         border-radius: 6px;
@@ -192,7 +223,7 @@ $cartResult->data_seek(0);
         box-shadow: 0 2px 8px rgba(0,0,0,0.07);
       }
       .checkout-btn:hover {
-        background:rgb(170, 52, 194);
+        background:rgb(103, 36, 226);
       }
       .back-link {
         display: inline-block;
@@ -203,7 +234,7 @@ $cartResult->data_seek(0);
         transition: color 0.2s;
       }
       .back-link:hover {
-        color:rgb(141, 1, 223);
+        color:rgb(125, 57, 233);
       }
       /* Footer Styles */
       footer {
@@ -382,37 +413,32 @@ $cartResult->data_seek(0);
     </form>
     <div class="order-summary">
       <h3>Order Summary</h3>
-      <div class="order-summary-table-wrapper">
-        <table>
-          <tr>
-            <th>Book</th>
-            <th>Name</th>
-            <th>Author</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-          </tr>
-          <?php
-          $total = 0;
-          $cartResult->data_seek(0);
-          while ($row = $cartResult->fetch_assoc()):
-              $subtotal = $row['price'] * $row['quantity'];
-              $total += $subtotal;
-          ?>
-          <tr>
-            <td><img src="/LIBro/uploads/<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['title']) ?>" width="50"></td>
-            <td><?= htmlspecialchars($row['title']) ?></td>
-            <td><?= htmlspecialchars($row['author']) ?></td>
-            <td>₱<?= number_format($row['price'], 2) ?></td>
-            <td><?= $row['quantity'] ?></td>
-            <td>₱<?= number_format($subtotal, 2) ?></td>
-          </tr>
-          <?php endwhile; ?>
-          <tr class="total-row">
-            <th colspan="5" style="text-align:right">Total:</th>
-            <th>₱<?= number_format($total, 2) ?></th>
-          </tr>
-        </table>
+      <div class="order-summary-list">
+        <?php
+        $total = 0;
+        $cartResult->data_seek(0);
+        while ($row = $cartResult->fetch_assoc()):
+            $subtotal = $row['price'] * $row['quantity'];
+            $total += $subtotal;
+        ?>
+        <div class="order-item">
+          <div class="order-item-img">
+            <img src="/LIBro/uploads/<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['title']) ?>">
+          </div>
+          <div class="order-item-details">
+            <div class="order-item-title"><?= htmlspecialchars($row['title']) ?></div>
+            <div class="order-item-author">by <?= htmlspecialchars($row['author']) ?></div>
+            <div class="order-item-meta">
+              <span>₱<?= number_format($row['price'], 2) ?> x <?= $row['quantity'] ?></span>
+              <span class="order-item-subtotal">₱<?= number_format($subtotal, 2) ?></span>
+            </div>
+          </div>
+        </div>
+        <?php endwhile; ?>
+        <div class="order-summary-total">
+          <span>Total</span>
+          <span>₱<?= number_format($total, 2) ?></span>
+        </div>
       </div>
     </div>
   </section>
