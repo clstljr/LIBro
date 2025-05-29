@@ -57,29 +57,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Publish Book</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<div class="container">
-    <h2>Publish a New Book</h2>
-    <p><a href="dashboard.php">Back to Dashboard</a></p>
-
-    <?php if ($success) echo "<p class='success'>$success</p>"; ?>
-    <?php if ($error) echo "<p class='error'>$error</p>"; ?>
-
-    <form method="post" enctype="multipart/form-data">
-        <input type="text" name="title" placeholder="Book Title" required><br>
-        <input type="text" name="author" placeholder="Author" required><br>
-        <textarea name="description" placeholder="Description"></textarea><br>
-        <input type="number" step="0.01" name="price" placeholder="Price" required><br>
-        <label>Book Cover Image (optional):</label><br>
-        <input type="file" name="image" accept="image/*"><br><br>
-        <button type="submit">Publish Book</button>
-    </form>
-</div>
-</body>
-</html>
+<?php if ($success) echo "<p class='success'>$success</p>"; ?>
+<?php if ($error) echo "<p class='error'>$error</p>"; ?>
