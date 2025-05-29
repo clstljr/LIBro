@@ -129,25 +129,6 @@ while ($row = $result->fetch_assoc()) {
       font-size: 2rem;
       margin: 0;
     }
-    .dashboard-header .dashboard-links {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-    .dashboard-header .dashboard-links a {
-      background: #f7f7fa;
-      color: #6c5dd4;
-      border-radius: 6px;
-      padding: 8px 16px;
-      font-weight: 500;
-      text-decoration: none;
-      border: 1px solid #ececec;
-      transition: background 0.2s, color 0.2s;
-    }
-    .dashboard-header .dashboard-links a:hover {
-      background: #6c5dd4;
-      color: #fff;
-    }
     .notification {
       background: #e6ffe6;
       color: #1a7f37;
@@ -166,12 +147,6 @@ while ($row = $result->fetch_assoc()) {
 <section class="home-section">
   <div class="dashboard-header" style="margin-top: 32px;">
     <h2>Welcome, <?= htmlspecialchars($_SESSION["user_name"]) ?>!</h2>
-    <div class="dashboard-links">
-      <a href="../LIBro/addBookPage.php">Publish a Book</a>
-      <a href="orders.php">My Purchases</a>
-      <a href="cart.php">My Cart</a>
-      <a href="logout.php">Logout</a>
-    </div>
   </div>
   <div class="dashboard-books">
     <h3>Available Books</h3>
