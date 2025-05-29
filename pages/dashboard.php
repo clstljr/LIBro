@@ -19,7 +19,7 @@ while ($row = $result->fetch_assoc()) {
 <html>
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css"/> <!-- Updated path -->
 </head>
 <body>
 <div class="container">
