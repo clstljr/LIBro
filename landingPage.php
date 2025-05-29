@@ -60,7 +60,7 @@
           <?php
           } else {
           ?>
-            <a href="pages/login.php" type="button" class="loginbtn">Log In</a>
+            <a href="loginPage.php" type="button" class="loginbtn">Log In</a>
           <?php
           }
           ?>
@@ -237,7 +237,7 @@
           <li><a href="index.php">Home</a></li>
           <li><a href="#contact">Contact Us</a></li>
           <li><a href="#about">About Us</a></li>
-          <li><a href="pages/login.php">Login</a></li>
+          <li><a href="loginPage.php">Login</a></li>
           <li><a href="#book">Find Books</a></li>
         </ul>
       </div>
