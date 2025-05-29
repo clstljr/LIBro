@@ -32,23 +32,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 }
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<div class="container">
-    <h2>Login</h2>
-    <?php if ($error) echo "<p class='error'>$error</p>"; ?>
-    <form method="post">
-        <input type="email" name="email" placeholder="Email Address" required><br>
-        <input type="password" name="password" placeholder="Password" required><br>
-        <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a href="../registrationPage.php">Register here</a>.</p>
-</div>
-</body>
-</html>
