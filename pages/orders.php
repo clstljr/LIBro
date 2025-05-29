@@ -9,7 +9,8 @@ if (!isset($_SESSION["user_id"])) {
 
 $user_id = $_SESSION["user_id"];
 
-$sql = "SELECT p.purchase_date, b.title, b.author, b.price, b.image 
+// Fetch purchases with quantity
+$sql = "SELECT p.purchase_date, b.title, b.author, b.price, b.image, p.quantity 
         FROM purchases p 
         JOIN books b ON p.book_id = b.id 
         WHERE p.user_id = ? 
@@ -36,23 +37,32 @@ $stmt->close();
 <body>
 <div class="container">
     <h2>My Purchases</h2>
-    <p><a href="dashboard.php">Back to Dashboard</a> | <a href="logout.php">Logout</a></p>
+    <p><a href="dashboard.php">Back to Dashboard</a></p>
 
     <?php if (empty($purchases)) : ?>
         <p>You haven't purchased any books yet.</p>
     <?php else : ?>
         <div class="purchase-list">
-            <?php foreach ($purchases as $p): ?>
-                <div class="purchase-item">
-                    <?php if ($p['image']): ?>
-                        <img src="uploads/<?= htmlspecialchars($p['image']) ?>" width="100"><br>
-                    <?php endif; ?>
-                    <strong><?= htmlspecialchars($p['title']) ?></strong><br>
-                    by <?= htmlspecialchars($p['author']) ?><br>
-                    Purchased on: <?= $p['purchase_date'] ?><br>
-                    Price: ₱<?= number_format($p['price'], 2) ?>
-                </div>
-            <?php endforeach; ?>
+            <table border="1" cellpadding="10">
+                <tr>
+                    <th>Book</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Purchase Date</th>
+                </tr>
+                <?php foreach ($purchases as $p): ?>
+                <tr>
+                    <td><?= htmlspecialchars($p['title']) ?></td>
+                    <td><?= htmlspecialchars($p['author']) ?></td>
+                    <td>₱<?= number_format($p['price'], 2) ?></td>
+                    <td><?= $p['quantity'] ?></td>
+                    <td>₱<?= number_format($p['price'] * $p['quantity'], 2) ?></td>
+                    <td><?= $p['purchase_date'] ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </table>
         </div>
     <?php endif; ?>
 </div>

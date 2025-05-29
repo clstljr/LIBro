@@ -1,4 +1,5 @@
 CREATE DATABASE IF NOT EXISTS library_db;
+
 USE library_db;
 
 CREATE TABLE users (
@@ -25,7 +26,21 @@ CREATE TABLE purchases (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     book_id INT,
+    quantity INT, 
     purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
+);
+
+CREATE TABLE cart_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    book_id INT,
+    quantity INT,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (book_id) REFERENCES books(id)
 );
+
+
+
+
