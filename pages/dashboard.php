@@ -24,7 +24,7 @@ while ($row = $result->fetch_assoc()) {
 <body>
 <div class="container">
     <h2>Welcome, <?= htmlspecialchars($_SESSION["user_name"]) ?>!</h2>
-    <p><a href="add_book.php">Publish a Book</a> | <a href="orders.php">My Purchases</a> | <a href="logout.php">Logout</a></p>
+    <p><a href="add_book.php">Publish a Book</a> | <a href="orders.php">My Purchases</a> | <a href="logout.php">Logout</a> | <a href="cart.php">My Cart</a></p>
 
     <h3>Available Books</h3>
     <?php if (empty($books)) : ?>
@@ -39,11 +39,22 @@ while ($row = $result->fetch_assoc()) {
                     <strong><?= htmlspecialchars($book['title']) ?></strong><br>
                     by <?= htmlspecialchars($book['author']) ?><br>
                     ₱<?= number_format($book['price'], 2) ?><br>
-                    <a href="buy_book.php?id=<?= $book['id'] ?>">Buy</a>
+                    <form method="post" action="add_to_cart.php" style="display:inline;">
+                        <input type="hidden" name="book_id" value="<?= $book['id'] ?>">
+                        <button type="submit">Add to Cart</button>
+                    </form>
                 </div>
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
 </div>
+    <?php if (isset($_GET['added'])): ?>
+        <p style="color: green;">Book added to cart successfully!</p>
+    <?php endif; ?>
+    <?php if (isset($_GET['checkout']) && $_GET['checkout'] === 'success'): ?>
+    <div class="notification">
+        <p>Your order has been placed successfully and will arrive soon!</p>
+    </div>
+<?php endif; ?>
 </body>
 </html>
