@@ -25,7 +25,7 @@
       <div class="logo">
         <div class="icon">
           <!-- <i class='bx bx-book-reader'></i> -->
-          <img src="assets/images/LOGO.png" alt="Library Management System Logo">
+          <img src="assets/images/LIBroLogo.png" alt="Library Management System Logo">
         </div>
         <div class="logo-details">
           <h5>LIbro</h5>
