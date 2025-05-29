@@ -33,36 +33,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Register</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<div class="container">
-    <h2>Register</h2>
-    <?php if ($success) echo "<p class='success'>$success</p>"; ?>
-    <?php if ($error) echo "<p class='error'>$error</p>"; ?>
-    <form method="post">
-        <label>Email:</label>
-        <input type="email" name="email" required>
-
-        <label>Username:</label>
-        <input type="text" name="username" required>
-
-        <label>Password:</label>
-        <input type="password" name="password" required>
-
-        <label>Address:</label>
-        <input type="text" name="address" required>
-
-        <label>Phone Number:</label>
-        <input type="text" name="phone" required>
-
-        <button type="submit">Register</button>
-    </form>
-    <p>Already have an account? <a href="login.php">Login here</a>.</p>
-</div>
-</body>
-</html>
+<?php if($success): ?>
+    <div id="successMessage">SUCCESS</div>
+    <script type="text/javascript">
+        setTimeout(function() {
+            window.location.href = "login.php";
+        }, 3000);  // 10 seconds (10000 milliseconds)
+    </script>
+<?php endif; ?>
