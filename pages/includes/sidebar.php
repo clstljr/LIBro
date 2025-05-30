@@ -8,7 +8,7 @@
         </a>
       </div>
       <ul class="sub-menu">
-        <li><span>Publish a new book to the library</span></li>
+        <li><span>Publish a new book</span></li>
       </ul>
     </li>
     <li>
@@ -19,7 +19,7 @@
         </a>
       </div>
       <ul class="sub-menu">
-        <li><span>View your purchased books</span></li>
+        <li><span>View your purchased</span></li>
       </ul>
     </li>
     <li>
@@ -30,7 +30,7 @@
         </a>
       </div>
       <ul class="sub-menu">
-        <li><span>See books in your cart</span></li>
+        <li><span>Your cart</span></li>
       </ul>
     </li>
     <li>
@@ -41,7 +41,7 @@
         </a>
       </div>
       <ul class="sub-menu">
-        <li><span>Sign out of your account</span></li>
+        <li><span>Logout</span></li>
       </ul>
     </li>
   </ul>

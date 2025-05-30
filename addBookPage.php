@@ -23,7 +23,6 @@
     <div class="home-content">
       <i class="fa-solid fa-bars"></i>
       <div class="logout">
-        <button><a href="logout.php">Log Out</a></button>
       </div>
     </div>
     <?php
