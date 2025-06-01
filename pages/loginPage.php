@@ -78,8 +78,8 @@
     </form>
   </section>
 
-  <footer>
-    <div class="container">
+  <footer style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; background: #fff;">
+    <div class="container" style="max-width: 5000px; margin: 0 auto; width: 100%;">
       <div class="logo-description">
         <div class="logo">
           <div class="img">
@@ -90,13 +90,7 @@
           </div>
         </div>
         <div class="logo-body">
-<<<<<<< HEAD:loginPage.php
-          <p>
-            Feed Your Mind, Anytime, Anywhere.
-          </p>
-=======
           <p>LIbro is a library management system designed to simplify book borrowing and management.</p>
->>>>>>> a20b3da9405b13ec3a44c1ef740a446bcb40adc4:pages/loginPage.php
         </div>
         <div class="social-links">
           <h4>Follow Us</h4>
@@ -109,8 +103,6 @@
           </ul>
         </div>
       </div>
-<<<<<<< HEAD:loginPage.php
-=======
       <div class="categories list">
         <h4>Book Categories</h4>
         <ul>
@@ -122,7 +114,6 @@
           <li><a href="#">Fantasy</a></li>
         </ul>
       </div>
->>>>>>> a20b3da9405b13ec3a44c1ef740a446bcb40adc4:pages/loginPage.php
       <div class="quick-links list">
         <h4>Quick Links</h4>
         <ul>
