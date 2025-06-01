@@ -28,7 +28,10 @@
     <div class="home-content">
       <i class="fa-solid fa-bars"></i>
       <div class="logout">
+<<<<<<< HEAD:addBookPage.php
+=======
         <button><a href="../../include/logout.php">Log Out</a></button> <!-- Correct logout path -->
+>>>>>>> a20b3da9405b13ec3a44c1ef740a446bcb40adc4:pages/librarian/addbookPage.php
       </div>
     </div>
     

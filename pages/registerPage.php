@@ -86,8 +86,8 @@
     </div>
   </section>
 
-  <footer>
-    <div class="container">
+  <footer style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; background: #fff;">
+    <div class="container" style="max-width: 5000px; margin: 0 auto; width: 100%;">
       <div class="logo-description">
         <div class="logo">
           <div class="img">
@@ -98,7 +98,9 @@
           </div>
         </div>
         <div class="logo-body">
-          <p>LIbro is a library management system designed to simplify book borrowing and management.</p>
+          <p>
+            Feed Your Mind, Anytime, Anywhere.
+          </p>
         </div>
         <div class="social-links">
           <h4>Follow Us</h4>
@@ -130,6 +132,23 @@
           <li><a href="#about">About Us</a></li>
           <li><a href="loginPage.php">Login</a></li>
           <li><a href="#book">Find Books</a></li>
+        </ul>
+      </div>
+      <div class="our-store list">
+        <h4>Our Library</h4>
+        <div class="map" style="margin-top: 1rem">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4810.766469366541!2d121.03795693070802!3d14.41434032224864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d04c18edb14d%3A0xb5414d4cc0f9245!2sFEU%20Alabang!5e0!3m2!1sen!2sph!4v1748524901852!5m2!1sen!2sph" height="70" style="width: 100%; border: none; border-radius: 5px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <ul>
+          <li>
+            <a href="#"><i class="fa-solid fa-location-dot"></i>C26Q+545 Wood District, Corporate Woods cor. South Corporate Avenues, Filinvest City, Muntinlupa City, 1781, Metro Manila, Philippines</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-phone"></i>+63 945 524 9264</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-envelope"></i>jaimin@masel.com</a>
+          </li>
         </ul>
       </div>
     </div>
