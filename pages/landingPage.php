@@ -110,7 +110,7 @@
       </div>
       <div class="about-content">
         <h4>About Us</h4>
-        <p>LIbro is a library management system designed to simplify book borrowing and management.</p>
+        <p>Libro is your smart library companion. Libro is a powerful library management system designed to streamline book borrowing, tracking, and management. Whether you're a student, librarian, or avid reader, Libro makes accessing and organizing books easier, faster, and more efficient.</p>
       </div>
     </div>
   </section>
@@ -147,8 +147,8 @@
     </div>
   </section>
 
-  <footer>
-    <div class="container">
+  <footer style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; background: #fff;">
+    <div class="container" style="max-width: 5000px; margin: 0 auto; width: 100%;">
       <div class="logo-description">
         <div class="logo">
           <div class="img">
@@ -159,13 +159,9 @@
           </div>
         </div>
         <div class="logo-body">
-<<<<<<< HEAD:landingPage.php
           <p>
             Feed Your Mind, Anytime, Anywhere.
           </p>
-=======
-          <p>LIbro is a library management system designed to simplify book borrowing and management.</p>
->>>>>>> a20b3da9405b13ec3a44c1ef740a446bcb40adc4:pages/landingPage.php
         </div>
         <div class="social-links">
           <h4>Follow Us</h4>
