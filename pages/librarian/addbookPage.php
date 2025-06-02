@@ -46,6 +46,38 @@
         <div class="book-item" style="max-width:340px; min-width:260px; flex-direction:column; align-items:center; padding:32px 24px;">
           <img src="https://wordpress.library-management.com/wp-content/themes/library/img/259x340.png" alt="Book Cover Image" id="img-preview" style="width:180px; height:240px; object-fit:cover; border-radius:12px; margin-bottom:18px;" />
           <div style="font-size:1rem; color:#888; text-align:center;">Book Cover Preview</div>
+<body onload="preloader()">
+  <?php include '../../pages/sidebar.php'; ?> <!-- Include the sidebar -->
+  
+  <section class="home-section">
+    <div class="home-content">
+      <i class="fa-solid fa-bars"></i>
+      <div class="logout">
+        <button><a href="../../include/logout.php">Log Out</a></button> <!-- Correct logout path -->
+      </div>
+    </div>
+    
+    <!-- Back to Dashboard Button -->
+    <div class="back-to-dashboard"> 
+      <a href="dashboardLibrarianPage.php" class="btn-dashboard" role="button" aria-label="Back to Dashboard">
+        <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+      </a>
+    </div>
+
+    <?php
+    if (isset($_GET['error'])) {
+        echo '<p class="error">' . htmlspecialchars($_GET['error']) . '</p>';
+    }
+    if (isset($_GET['message'])) {
+        echo '<p class="success">' . htmlspecialchars($_GET['message']) . '</p>';
+    }
+    ?>
+    
+    <div class="control-panel">
+      <h4>Add Book</h4>
+      <div class="container">
+        <div class="book-cover-img">
+          <img src="https://wordpress.library-management.com/wp-content/themes/library/img/259x340.png" alt="Book Cover Image" id="img-preview" />
         </div>
         <div class="book-item" style="flex:1; min-width:320px; max-width:600px;">
           <h4 style="margin-bottom:1.5rem; color:#6c5dd4;">Book Details</h4>

@@ -1,0 +1,94 @@
+/* Reset and Base Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f4f6f9, #e0e5ec);
+    color: #333;
+    padding: 40px;
+}
+
+/* Header Links */
+a {
+    display: inline-block;
+    margin: 0 15px 20px 0;
+    padding: 10px 20px;
+    background-color: #6c5dd4;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+a:hover {
+    background-color: #6c5dd4;
+    transform: translateY(-2px);
+}
+
+/* Headings */
+h2 {
+    text-align: center;
+    margin: 30px 0 20px;
+    font-size: 28px;
+    color: #444;
+}
+
+/* Message Styling */
+p {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px auto;
+    width: fit-content;
+    max-width: 600px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #6c5dd4;
+    color: white;
+}
+
+thead th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+tbody td {
+    padding: 15px;
+    border-top: 1px solid #ddd;
+}
+
+tbody tr:hover {
+    background-color: #f1f8ff;
+}
+
+/* Return Button Styling */
+button {
+    padding: 6px 14px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
