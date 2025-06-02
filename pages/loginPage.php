@@ -78,8 +78,8 @@
     </form>
   </section>
 
-  <footer>
-    <div class="container">
+  <footer style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; background: #fff;">
+    <div class="container" style="max-width: 5000px; margin: 0 auto; width: 100%;">
       <div class="logo-description">
         <div class="logo">
           <div class="img">

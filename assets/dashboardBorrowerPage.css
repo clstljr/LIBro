@@ -1,0 +1,215 @@
+body {
+  background: #f8f9fa;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+.sidebar {
+  width: 210px;
+  background: #fff;
+  box-shadow: 2px 0 16px rgba(108,93,212,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 32px 0 0 0;
+}
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2.5rem;
+  padding-left: 32px;
+}
+.sidebar-logo i {
+  font-size: 2rem;
+  color: #6c5dd4;
+}
+.sidebar-logo span {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #6c5dd4;
+}
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+.sidebar-links li {
+  margin-bottom: 10px;
+}
+.sidebar-links a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 32px;
+  color: #6c5dd4;
+  font-weight: 600;
+  font-size: 1.08em;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.sidebar-links a:hover, .sidebar-links a.active {
+  background: #6c5dd4;
+  color: #fff;
+}
+.sidebar-links a i {
+  font-size: 1.1em;
+  color: inherit;
+  transition: color 0.2s;
+}
+.main-section {
+  flex: 1;
+  padding: 40px 40px 0 40px;
+  background: #f8f9fa;
+}
+.main-section h2 {
+  color: #6c5dd4;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+.main-section h3 {
+  color: #4b3bbd;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.main-section h3.fiction-title {
+  margin-top: 3.5rem;
+  margin-bottom: 2.5rem;
+}
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 32px;
+  grid-auto-flow: column;
+  justify-content: end;
+  align-content: start;
+  min-width: 0;
+}
+.book-list.fiction-list {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  gap: 40px;
+}
+.book-list.biography-list {
+  grid-template-rows: 1fr !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  gap: 32px !important;
+}
+.book-item {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(108,93,212,0.08);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border: 1px solid #ececec;
+  min-height: 260px;
+  height: 100%;
+  width: 100%;
+  /* Remove max-width for full grid width */
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.book-item img {
+  width: 160px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 40px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  flex-shrink: 0;
+}
+.book-item .book-info {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
+}
+.book-item h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2d3a4b;
+  margin-bottom: 4px;
+  text-align: left;
+}
+.book-item p {
+  font-size: 1.08rem;
+  color: #6c5dd4;
+  font-style: italic;
+  margin-bottom: 6px;
+  text-align: left;
+}
+.book-item .stock {
+  color: #444;
+  font-size: 1.08rem;
+  margin-bottom: 10px;
+  font-weight: 500;
+  text-align: left;
+}
+.book-item form {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.book-item button {
+  background: #6c5dd4;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.book-item button:disabled {
+  background: #ccc;
+  color: #fff;
+  cursor: not-allowed;
+}
+.book-item button:hover:not(:disabled) {
+  background: #4b3bbd;
+}
+.success-message {
+  color: green;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.no-books {
+  color: #e55352;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+@media (max-width: 900px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    padding: 0;
+  }
+  .main-section {
+    padding: 24px 8px 0 8px;
+  }
+  .book-list {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-flow: row;
+    justify-content: stretch;
+  }
+}

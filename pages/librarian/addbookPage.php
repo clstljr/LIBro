@@ -33,8 +33,8 @@
     </div>
     
     <!-- Back to Dashboard Button -->
-    <div class="back-to-dashboard">
-      <a href="dashboardLibrarianPage.php" class="btn-dashboard">
+    <div class="back-to-dashboard"> 
+      <a href="dashboardLibrarianPage.php" class="btn-dashboard" role="button" aria-label="Back to Dashboard">
         <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
       </a>
     </div>
