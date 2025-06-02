@@ -19,123 +19,124 @@
   
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  <style>
+      .sidebar-links a {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.8rem 1.5rem;
+        color: #222;
+        text-decoration: none;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: background 0.18s, color 0.18s;
+        font-size: 1.08rem;
+      }
+      .sidebar-links a:hover {
+        background: #6c5dd4 !important;
+        color: #fff !important;
+      }
+      .sidebar-links a.active, .sidebar-links a.active:visited {
+        background: #6c5dd4 !important;
+        color: #fff !important;
+        font-weight: 600;
+      }
+      .sidebar-links a i {
+        color: #6c5dd4;
+        transition: color 0.18s;
+        font-size: 1.15rem;
+      }
+      .sidebar-links a.active i, .sidebar-links a:hover i {
+        color: #fff !important;
+      }
+      .sidebar {
+        height: 100vh;
+        min-width: 220px;
+        background: #fff;
+        box-shadow: 2px 0 16px rgba(108,93,212,0.07);
+        display: flex;
+        flex-direction: column;
+      }
+      .sidebar-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 2rem 1.5rem 1.2rem 1.5rem;
+      }
+      .sidebar-logo span {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #6c5dd4;
+        letter-spacing: 1px;
+      }
+      .main-section {
+        flex: 1;
+        padding: 2.5rem 2.5rem 2.5rem 2rem;
+        background: #faf9fb;
+        min-height: 100vh;
+      }
+    </style>
 </head>
 
 <body>
-  <?php include '../../pages/sidebar.php'; ?> <!-- Include the sidebar -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">
-        <div class="icon">
-          <img src="../../assets/image/LIBroLogo.png" alt="Library Management System Logo"> <!-- Correct path to logo -->
-        </div>
-        <div class="logo-details">
-          <h5>LIbro</h5>
-        </div>
+  <div class="dashboard-container" style="display:flex; min-height:100vh;">
+    <aside class="sidebar" style="width:220px; min-width:220px; background:#fff; box-shadow:2px 0 16px rgba(108,93,212,0.07); display:flex; flex-direction:column;">
+      <div class="sidebar-logo" style="display:flex; align-items:center; gap:0.7rem; padding:2rem 1.5rem 1.2rem 1.5rem;">
+        <img src="../../assets/image/LIBroLogo.png" alt="LIbro Logo" style="width:40px; height:40px; object-fit:contain;" />
+        <span style="font-size:1.3rem; font-weight:700; color:#6c5dd4; letter-spacing:1px;">LIbro</span>
       </div>
-      <!-- Back to Dashboard Button -->
-        <div class="back-to-dashboard">
-            <a href="dashboardLibrarianPage.php" class="btn-dashboard">
-            <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
-            </a>
-        </div>
-      <div class="hamburger">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
+      <ul class="sidebar-links" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.5rem;">
+        <li><a href="dashboardLibrarianPage.php" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="addbookPage.php" class="sidebar-link active"><i class="fa-solid fa-plus"></i> Add Book</a></li>
+        <li><a href="addlibrarianPage.php" class="sidebar-link"><i class="fa-solid fa-user-plus"></i> Add Librarian</a></li>
+        <li><a href="../../include/logout.php" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+      </ul>
+    </aside>
+    <main class="main-section" style="flex:1; padding:2.5rem 2.5rem 2.5rem 2rem; background:#faf9fb; min-height:100vh;">
+      <div style="display:flex; flex-direction:column; align-items:flex-start; gap:0.2rem; margin-bottom:1.5rem;">
+        <h2 style="color:#6c5dd4;margin-left: 250px; font-size:2rem; font-weight:700;">Add librarian account</h2>
       </div>
-    </nav>
-  </header>
-
-  <section class="registration">
-    <div class="registration-form">
-      <h4>Add Librarian</h4>
-      <form class="input-form" action="../../include/librarian/addlibrarian.php" method="POST"> <!-- Correct form action -->
-        <?php
-        if (isset($_GET['error'])) {
-          echo "<p class='error'>" . htmlspecialchars($_GET['error']) . "</p>";
-        }
-        if (isset($_GET['message'])) {
-          echo "<p class='success'>" . htmlspecialchars($_GET['message']) . "</p>";
-        }
-        ?>
-        <div class="input-field">
-          <label for="first_name">First Name *</label>
-          <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
+      <section class="registration">
+        <div class="registration-form">
+          <form class="input-form" action="../../include/librarian/addlibrarian.php" method="POST"> <!-- Correct form action -->
+            <?php
+            if (isset($_GET['error'])) {
+              echo "<p class='error'>" . htmlspecialchars($_GET['error']) . "</p>";
+            }
+            if (isset($_GET['message'])) {
+              echo "<p class='success'>" . htmlspecialchars($_GET['message']) . "</p>";
+            }
+            ?>
+            <div class="input-field">
+              <label for="first_name">First Name *</label>
+              <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
+            </div>
+            <div class="input-field">
+              <label for="last_name">Last Name *</label>
+              <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
+            </div>
+            <div class="input-field">
+              <label for="email">Email *</label>
+              <input type="email" name="email" id="email" placeholder="Your Email" required>
+            </div>
+            <div class="input-field">
+              <label for="address">Address *</label>
+              <input type="text" name="address" id="address" placeholder="Address" required>
+            </div>
+            <div class="input-field">
+              <label for="phone">Mobile No. *</label>
+              <input type="text" maxlength="10" name="phone" id="phone" placeholder="Mobile No." required>
+            </div>
+            <div class="input-field">
+              <label for="password">Password *</label>
+              <input type="password" name="password" id="password" placeholder="Password" required>
+            </div>
+            <input type="submit" name="register" id="signup" value="Add Librarian">
+          </form>
         </div>
-        <div class="input-field">
-          <label for="last_name">Last Name *</label>
-          <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
-        </div>
-        <div class="input-field">
-          <label for="email">Email *</label>
-          <input type="email" name="email" id="email" placeholder="Your Email" required>
-        </div>
-        <div class="input-field">
-          <label for="address">Address *</label>
-          <input type="text" name="address" id="address" placeholder="Address" required>
-        </div>
-        <div class="input-field">
-          <label for="phone">Mobile No. *</label>
-          <input type="text" maxlength="10" name="phone" id="phone" placeholder="Mobile No." required>
-        </div>
-        <div class="input-field">
-          <label for="password">Password *</label>
-          <input type="password" name="password" id="password" placeholder="Password" required>
-        </div>
-        <input type="submit" name="register" id="signup" value="Add Librarian">
-      </form>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="logo-description">
-        <div class="logo">
-          <div class="img">
-            <i class='bx bx-book-reader'></i>
-          </div>
-          <div class="title">
-            <h4>LIbro</h4>
-          </div>
-        </div>
-        <div class="logo-body">
-          <p>LIbro is a library management system designed to simplify book borrowing and management.</p>
-        </div>
-        <div class="social-links">
-          <h4>Follow Us</h4>
-          <ul class="links">
-            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="categories list">
-        <h4>Book Categories</h4>
-        <ul>
-          <li><a href="#">Fiction</a></li>
-          <li><a href="#">Non-Fiction</a></li>
-          <li><a href="#">Science</a></li>
-          <li><a href="#">History</a></li>
-          <li><a href="#">Biography</a></li>
-          <li><a href="#">Fantasy</a></li>
-        </ul>
-      </div>
-      <div class="quick-links list">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="../../index.php">Home</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="../loginPage.php">Login</a></li>
-          <li><a href="#book">Find Books</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
+      </section>
+    </main>
+  </div>
 
   <script>
     let hamburgerbtn = document.querySelector(".hamburger");
