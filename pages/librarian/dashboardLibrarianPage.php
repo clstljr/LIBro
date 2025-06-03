@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <title>Librarian Dashboard</title>
-    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" href="../../assets/dashboard_librarian.css">
 </head>
 <body>
     <a href="../../pages/librarian/addbookPage.php">Add Book</a>
