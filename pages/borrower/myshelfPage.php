@@ -19,7 +19,9 @@
       </div>
       <ul class="sidebar-links">
         <li><a href="myshelfPage.php" class="active"><i class="fa-solid fa-book"></i> My Shelf</a></li>
+        <li><a href="rules.php"><i class="fa-solid fa-gavel"></i> Rules</a></li>
         <li><a href="../../include/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+
       </ul>
     </aside>
     <main class="main-section">
@@ -42,15 +44,15 @@
                   <input type="hidden" name="book_id" value="<?php echo htmlspecialchars($book['book_id']); ?>">
                   <button type="submit">Remove</button>
                 </form>
-                <form action="checkoutPage.php" method="GET" style="margin:0;">
-                  <input type="hidden" name="book_id" value="<?php echo htmlspecialchars($book['book_id']); ?>">
-                  <button type="submit" name="confirm_checkout">Check Out</button>
-                </form>
               </div>
             </div>
           </div>
         <?php } ?>
       </div>
+      <form action="checkoutPage.php" method="GET" style="margin:0; width: 100%; display: flex; justify-content: center;">
+        <input type="hidden" name="book_id" value="<?php echo htmlspecialchars($book['book_id']); ?>">
+        <button type="submit" name="confirm_checkout">Check Out</button>
+        </form>
     </main>
   </div>
 </body>

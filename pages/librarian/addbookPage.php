@@ -24,9 +24,9 @@
         <span>LIbro</span>
       </div>
       <ul class="sidebar-links">
-        <li><a href="dashboardLibrarianPage.php" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="dashboardLibrarianPage.php" class="sidebar-link<?php if(basename($_SERVER['PHP_SELF']) == 'dashboardLibrarianPage.php') ?>"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
         <li><a href="addbookPage.php" class="sidebar-link<?php if(basename($_SERVER['PHP_SELF']) == 'addbookPage.php') echo ' active'; ?>"><i class="fa-solid fa-plus"></i> Add Book</a></li>
-        <li><a href="addlibrarianPage.php" class="sidebar-link<?php if(basename($_SERVER['PHP_SELF']) == 'addlibrarianPage.php') echo ' active'; ?>"><i class="fa-solid fa-user-plus"></i> Add Librarian</a></li>
+        <li><a href="addlibrarianPage.php" class="sidebar-link<?php if(basename($_SERVER['PHP_SELF']) == 'addlibrarianPage.php'); ?>"><i class="fa-solid fa-user-plus"></i> Add Librarian</a></li>
         <li><a href="../../include/logout.php" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
       </ul>
     </aside>
@@ -42,27 +42,6 @@
           echo '<p class="success" style="color:green; text-align:center;">' . htmlspecialchars($_GET['message']) . '</p>';
       }
       ?>
-      <div class="book-list" style="display:flex; flex-wrap:wrap; gap:40px; justify-content:center; align-items:flex-start;">
-        <div class="book-item" style="max-width:340px; min-width:260px; flex-direction:column; align-items:center; padding:32px 24px;">
-          <img src="https://wordpress.library-management.com/wp-content/themes/library/img/259x340.png" alt="Book Cover Image" id="img-preview" style="width:180px; height:240px; object-fit:cover; border-radius:12px; margin-bottom:18px;" />
-          <div style="font-size:1rem; color:#888; text-align:center;">Book Cover Preview</div>
-<body onload="preloader()">
-  <?php include '../../pages/sidebar.php'; ?> <!-- Include the sidebar -->
-  
-  <section class="home-section">
-    <div class="home-content">
-      <i class="fa-solid fa-bars"></i>
-      <div class="logout">
-        <button><a href="../../include/logout.php">Log Out</a></button> <!-- Correct logout path -->
-      </div>
-    </div>
-    
-    <!-- Back to Dashboard Button -->
-    <div class="back-to-dashboard"> 
-      <a href="dashboardLibrarianPage.php" class="btn-dashboard" role="button" aria-label="Back to Dashboard">
-        <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
-      </a>
-    </div>
 
     <?php
     if (isset($_GET['error'])) {
@@ -75,19 +54,20 @@
     
     <div class="control-panel">
       <h4>Add Book</h4>
-      <div class="container">
+      <div class="addbook-flex-row" style="justify-content: center;">
         <div class="book-cover-img">
           <img src="https://wordpress.library-management.com/wp-content/themes/library/img/259x340.png" alt="Book Cover Image" id="img-preview" />
+          <div class="cover-preview-label">Book Cover Preview</div>
         </div>
-        <div class="book-item" style="flex:1; min-width:320px; max-width:600px;">
-          <h4 style="margin-bottom:1.5rem; color:#6c5dd4;">Book Details</h4>
-          <form class="input-form" action="../../include/librarian/addbook.php" method="POST" enctype="multipart/form-data" style="display:flex; flex-direction:column; gap:1.2rem;">
-            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-              <div style="flex:1; min-width:180px;">
+        <div class="book-item">
+          <h4>Book Details</h4>
+          <form class="input-form" action="../../include/librarian/addbook.php" method="POST" enctype="multipart/form-data">
+            <div class="form-row">
+              <div>
                 <label for="title">Book Title *</label>
                 <input type="text" name="title" id="title" placeholder="Enter Book Title" required />
               </div>
-              <div style="flex:1; min-width:180px;">
+              <div>
                 <label for="author">Author Name *</label>
                 <input type="text" name="author" id="author" placeholder="Enter Author Name" required />
               </div>
@@ -96,14 +76,14 @@
               <label for="description">Book Description *</label>
               <textarea rows="5" placeholder="Enter Book Description" id="desc" name="description" required></textarea>
             </div>
-            <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
-              <div style="flex:1; min-width:180px;">
+            <div class="form-row">
+              <div>
                 <label for="image">Upload Book Img *</label>
                 <input type="file" name="image" id="image" accept=".jpg,.png" required />
               </div>
             </div>
-            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-              <div style="flex:1; min-width:180px;">
+            <div class="form-row">
+              <div>
                 <label for="category">Category *</label>
                 <select name="category" id="category" required>
                   <option value="" disabled selected>Select a Category</option>
@@ -114,15 +94,16 @@
                   <option value="Biography">Biography</option>
                 </select>
               </div>
-              <div style="flex:1; min-width:180px;">
+              <div>
                 <label for="stock">Stock *</label>
                 <input type="number" name="stock" id="stock" placeholder="Enter Stock Quantity" required />
               </div>
             </div>
-            <input type="submit" value="Add Book" name="add-book" style="background:#6c5dd4; color:#fff; border:none; border-radius:8px; padding:12px 36px; font-size:1.1rem; font-weight:600; cursor:pointer; transition:background 0.2s; align-self:flex-end;" />
+            <input type="submit" value="Add Book" name="add-book" class="addbook-btn" />
           </form>
         </div>
       </div>
+    </div>
     </main>
   </div>
   <script>
@@ -141,6 +122,90 @@
   </script>
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <script src="../../js/main.js"></script>
+  <style>
+.addbook-flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 1.5rem;
+  flex-wrap: nowrap;
+}
+.book-cover-img {
+  max-width: 340px;
+  min-width: 260px;
+  flex: 0 0 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(108,93,212,0.07);
+  padding: 32px 24px;
+}
+.book-cover-img img {
+  width: 180px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  background: #f3f0fd;
+  border: 2px solid #e0e0e0;
+}
+.cover-preview-label {
+  font-size: 1rem;
+  color: #888;
+  text-align: center;
+}
+.book-item {
+  flex: 1;
+  min-width: 320px;
+  max-width: 600px;
+}
+.book-item h4 {
+  margin-bottom: 1.5rem;
+  color: #6c5dd4;
+}
+.input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.form-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.form-row > div {
+  flex: 1;
+  min-width: 180px;
+}
+.addbook-btn {
+  background: #6c5dd4;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 36px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  align-self: flex-end;
+}
+@media (max-width: 900px) {
+  .addbook-flex-row {
+    flex-direction: column;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .book-cover-img {
+    margin-bottom: 0;
+    align-self: center;
+  }
+}
+</style>
 </body>
 
 </html>
