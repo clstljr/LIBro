@@ -1,3 +1,4 @@
+Database Setup:
 CREATE DATABASE IF NOT EXISTS LIBro_db;
 USE LIBro_db;
 
