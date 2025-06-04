@@ -19,6 +19,7 @@
       </div>
       <ul class="sidebar-links">
         <li><a href="myshelfPage.php"><i class="fa-solid fa-book"></i> My Shelf</a></li>
+        <li><a href="rules.php"><i class="fa-solid fa-gavel"></i> Rules</a></li>
         <li><a href="../../include/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
       </ul>
     </aside>

@@ -37,7 +37,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_checkout'])) 
     $deleteStmt->execute();
 
     // Redirect to dashboard with success message
-    header("Location: ../../pages/borrower/dashboardBorrowerPage.php?message=Please pick it up at the LIBro library.");
-    exit;
-}
+    header("Location: ../../pages/borrower/dashboardBorrowerPage.php?message=Please pick it up at the LIBro library.");}
 ?>

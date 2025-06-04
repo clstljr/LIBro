@@ -10,12 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = trim($_POST['address']);
     $type = 'librarian'; // Default account type is librarian
 
-    // Check for empty fields
-    if (empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($phone) || empty($address)) {
-        header("Location: ../../pages/librarian/addlibrarianPage.php?error=All fields are required.");
-        exit;
-    }
-
     // Check for unique email
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
@@ -27,11 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Redirect back to add librarian page with error message
         header("Location: ../../pages/librarian/addlibrarianPage.php?error=Email already exists.");
         exit;
-    } else {
+    }
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
         // Insert librarian into database
         $query = "INSERT INTO users (first_name, last_name, email, password, phone, address, type) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("sssssss", $firstName, $lastName, $email, $password, $phone, $address, $type);
+        $stmt->bind_param("sssssss", $firstName, $lastName, $email, $hashedPassword, $phone, $address, $type);
         if ($stmt->execute()) {
             // Redirect back to add librarian page with success message
             header("Location: ../../pages/librarian/addlibrarianPage.php?message=Librarian added successfully.");
@@ -41,5 +38,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
     }
-}
 ?>
