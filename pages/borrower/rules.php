@@ -27,7 +27,7 @@
       <h2>Library Borrowing Rules</h2>
       <div class="rules-list" style="margin-top: 20px; background: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
         <ul style="line-height: 1.8; font-size: 1.05rem;">
-          <li><strong>One book per borrower:</strong> You are only allowed to borrow one book at a time.</li>
+          <li><strong>One copy of a book per borrower:</strong> You are only allowed to borrow one copy of one book at a time.</li>
           <li><strong>Maximum borrowing period:</strong> You may borrow a book for up to <strong>2 weeks</strong> (14 days).</li>
           <li><strong>Late return penalty:</strong> If the book is not returned on time, a fee of <strong>₱50 per day</strong> will be charged.</li>
           <li><strong>Damaged books:</strong> Any damage to a book will result in a fine of <strong>₱500–₱1000</strong> depending on the severity and value of the book.</li>

@@ -74,7 +74,7 @@
         </div>
         <div class="input-field">
           <label for="phone">Mobile No. *</label>
-          <input type="text" maxlength="10" name="phone" id="phone" placeholder="Mobile No." required>
+          <input type="number" maxlength="11" name="phone" id="phone" placeholder="Mobile No." required>
         </div>
         <div class="input-field">
           <label for="password">Password *</label>

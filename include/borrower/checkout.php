@@ -1,7 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
     session_start();
-}
 
 include __DIR__ . '/../db_connection.php'; // Use __DIR__ to ensure the correct path
 
