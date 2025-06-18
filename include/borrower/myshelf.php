@@ -1,6 +1,6 @@
 <?php
 session_start();
-include __DIR__ . '/../db_connection.php'; // Use __DIR__ to ensure the correct path
+include __DIR__ . '/../db_connection.php'; 
 
 // Fetch books in "My Shelf"
 $user_id = $_SESSION['user_id'];

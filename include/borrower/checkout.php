@@ -1,7 +1,6 @@
 <?php
-    session_start();
-
-include __DIR__ . '/../db_connection.php'; // Use __DIR__ to ensure the correct path
+session_start();
+include __DIR__ . '/../db_connection.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../../pages/loginPage.php?error=Please log in to continue.");
