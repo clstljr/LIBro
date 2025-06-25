@@ -58,27 +58,55 @@
         ?>
         <div class="input-field">
           <label for="first_name">First Name *</label>
-          <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
+          <input type="text" name="first_name" id="first_name" placeholder="First Name" required value="<?= htmlspecialchars($_POST['first_name'] ?? '') ?>">
         </div>
         <div class="input-field">
           <label for="last_name">Last Name *</label>
-          <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
+          <input type="text" name="last_name" id="last_name" placeholder="Last Name" required value="<?= htmlspecialchars($_POST['last_name'] ?? '') ?>">
         </div>
         <div class="input-field">
           <label for="email">Email *</label>
-          <input type="email" name="email" id="email" placeholder="Your Email" required>
-        </div>
-        <div class="input-field">
-          <label for="address">Address *</label>
-          <input type="text" name="address" id="address" placeholder="Address" required>
+          <input type="email" name="email" id="email" placeholder="Your Email" required value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
         </div>
         <div class="input-field">
           <label for="phone">Mobile No. *</label>
-          <input type="number" maxlength="11" name="phone" id="phone" placeholder="Mobile No." required>
+          <input type="number" maxlength="11" name="phone" id="phone" placeholder="Mobile No." required value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>">
         </div>
         <div class="input-field">
           <label for="password">Password *</label>
           <input type="password" name="password" id="password" placeholder="Password" required>
+        </div>
+        <!-- Region -->
+        <div class="input-field">
+          <label for="region">Region *</label>
+          <select name="region" id="region" required>
+            <option value="">Select Region</option>
+            <?php
+            include '../include/db_connection.php';
+            $regions = mysqli_query($conn, "SELECT * FROM refregion");
+            while ($region = mysqli_fetch_assoc($regions)) {
+              echo "<option value='{$region['regCode']}'>{$region['regDesc']}</option>";
+            }
+            ?>
+          </select>
+        </div>
+        <div class="input-field">
+          <label for="province">Province *</label>
+          <select name="province" id="province" required disabled>
+            <option value="">Select Province</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label for="city">City/Municipality *</label>
+          <select name="city" id="city" required disabled>
+            <option value="">Select City</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label for="barangay">Barangay *</label>
+          <select name="barangay" id="barangay" required disabled>
+            <option value="">Select Barangay</option>
+          </select>
         </div>
         <input type="submit" name="register" id="signup" value="Register">
         <p>Already Have an Account? <a href="loginPage.php">Login Now</a></p> <!-- Correct path to login -->
@@ -163,6 +191,64 @@
       });
     }
   </script>
+  <script>
+document.getElementById('region').addEventListener('change', function() {
+    let region = this.value;
+    let provinceSelect = document.getElementById('province');
+    let citySelect = document.getElementById('city');
+    let barangaySelect = document.getElementById('barangay');
+    provinceSelect.innerHTML = '<option value="">Select Province</option>';
+    citySelect.innerHTML = '<option value="">Select City</option>';
+    barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+    citySelect.disabled = true;
+    barangaySelect.disabled = true;
+    if(region) {
+        fetch('../include/getProvinces.php?region=' + region)
+            .then(response => response.text())
+            .then(data => {
+                provinceSelect.innerHTML = data;
+                provinceSelect.disabled = false;
+            });
+    } else {
+        provinceSelect.disabled = true;
+    }
+});
+
+document.getElementById('province').addEventListener('change', function() {
+    let province = this.value;
+    let citySelect = document.getElementById('city');
+    let barangaySelect = document.getElementById('barangay');
+    citySelect.innerHTML = '<option value="">Select City</option>';
+    barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+    barangaySelect.disabled = true;
+    if(province) {
+        fetch('../include/getCities.php?province=' + province)
+            .then(response => response.text())
+            .then(data => {
+                citySelect.innerHTML = data;
+                citySelect.disabled = false;
+            });
+    } else {
+        citySelect.disabled = true;
+    }
+});
+
+document.getElementById('city').addEventListener('change', function() {
+    let city = this.value;
+    let barangaySelect = document.getElementById('barangay');
+    barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+    if(city) {
+        fetch('../include/getBarangays.php?city=' + city)
+            .then(response => response.text())
+            .then(data => {
+                barangaySelect.innerHTML = data;
+                barangaySelect.disabled = false;
+            });
+    } else {
+        barangaySelect.disabled = true;
+    }
+});
+</script>
 </body>
 
 </html>
