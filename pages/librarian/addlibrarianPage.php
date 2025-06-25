@@ -119,9 +119,37 @@
               <label for="email">Email *</label>
               <input type="email" name="email" id="email" placeholder="Your Email" required>
             </div>
+            <!-- Address fields: Region, Province, City, Barangay -->
             <div class="input-field">
-              <label for="address">Address *</label>
-              <input type="text" name="address" id="address" placeholder="Address" required>
+              <label for="region">Region *</label>
+              <select name="region" id="region" required>
+                <option value="">Select Region</option>
+                <?php
+                include __DIR__ . '/../../include/db_connection.php';
+                $regions = mysqli_query($conn, "SELECT * FROM refregion");
+                while ($region = mysqli_fetch_assoc($regions)) {
+                  echo "<option value='{$region['regCode']}'>{$region['regDesc']}</option>";
+                }
+                ?>
+              </select>
+            </div>
+            <div class="input-field">
+              <label for="province">Province *</label>
+              <select name="province" id="province" required disabled>
+                <option value="">Select Province</option>
+              </select>
+            </div>
+            <div class="input-field">
+              <label for="city">City/Municipality *</label>
+              <select name="city" id="city" required disabled>
+                <option value="">Select City</option>
+              </select>
+            </div>
+            <div class="input-field">
+              <label for="barangay">Barangay *</label>
+              <select name="barangay" id="barangay" required disabled>
+                <option value="">Select Barangay</option>
+              </select>
             </div>
             <div class="input-field">
               <label for="phone">Mobile No. *</label>
@@ -146,6 +174,63 @@
         nav_list.classList.add("active");
       });
     }
+
+    document.getElementById('region').addEventListener('change', function() {
+        let region = this.value;
+        let provinceSelect = document.getElementById('province');
+        let citySelect = document.getElementById('city');
+        let barangaySelect = document.getElementById('barangay');
+        provinceSelect.innerHTML = '<option value="">Select Province</option>';
+        citySelect.innerHTML = '<option value="">Select City</option>';
+        barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+        citySelect.disabled = true;
+        barangaySelect.disabled = true;
+        if(region) {
+            fetch('../../include/getProvinces.php?region=' + region)
+                .then(response => response.text())
+                .then(data => {
+                    provinceSelect.innerHTML = data;
+                    provinceSelect.disabled = false;
+                });
+        } else {
+            provinceSelect.disabled = true;
+        }
+    });
+
+    document.getElementById('province').addEventListener('change', function() {
+        let province = this.value;
+        let citySelect = document.getElementById('city');
+        let barangaySelect = document.getElementById('barangay');
+        citySelect.innerHTML = '<option value="">Select City</option>';
+        barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+        barangaySelect.disabled = true;
+        if(province) {
+            fetch('../../include/getCities.php?province=' + province)
+                .then(response => response.text())
+                .then(data => {
+                    citySelect.innerHTML = data;
+                    citySelect.disabled = false;
+                });
+        } else {
+            citySelect.disabled = true;
+        }
+    });
+
+    document.getElementById('city').addEventListener('change', function() {
+        let city = this.value;
+        let barangaySelect = document.getElementById('barangay');
+        barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+        if(city) {
+            fetch('../../include/getBarangays.php?city=' + city)
+                .then(response => response.text())
+                .then(data => {
+                    barangaySelect.innerHTML = data;
+                    barangaySelect.disabled = false;
+                });
+        } else {
+            barangaySelect.disabled = true;
+        }
+    });
   </script>
 </body>
 
