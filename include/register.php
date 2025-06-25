@@ -36,16 +36,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Hash the password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
    
-    $currentYear = date("Y");
-    $query = "SELECT id FROM users WHERE id LIKE '{$currentYear}%' ORDER BY id DESC LIMIT 1";
-    $result = mysqli_query($conn, $query);
-
-    if ($row = mysqli_fetch_assoc($result)) {
-        $lastID = (int)substr($row['id'], 4);
-        $nextID = $currentYear . str_pad($lastID + 1, 4, '0', STR_PAD_LEFT);
+    // Generate custom ID: YYYY1NNN (8 chars)
+    $year = date('Y');
+    $idPrefix = $year . '1';
+    // Get the latest ID with this prefix
+    $latestIdQuery = "SELECT id FROM users WHERE id LIKE '{$idPrefix}%'
+                      ORDER BY id DESC LIMIT 1";
+    $latestIdResult = mysqli_query($conn, $latestIdQuery);
+    if ($latestIdRow = mysqli_fetch_assoc($latestIdResult)) {
+        $lastNumber = (int)substr($latestIdRow['id'], 5, 3);
+        $nextNumber = $lastNumber + 1;
     } else {
-        $nextID = $currentYear . "0001";
+        $nextNumber = 1;
     }
+    $nextID = $idPrefix . str_pad($nextNumber, 3, '0', STR_PAD_LEFT);
 
     // Insert new user into the database
     $insertQuery = "INSERT INTO users (id, first_name, last_name, email, password, phone, type, region, province, city, barangay)
