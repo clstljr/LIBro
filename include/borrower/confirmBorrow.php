@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_checkout'])) 
     $user_id = $_SESSION['user_id'];
 
     // Fetch books from "My Shelf"
-    $query = "SELECT book_id, quantity FROM my_shelf WHERE user_id = ?";
+    $query = "SELECT book_id FROM my_shelf WHERE user_id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
@@ -15,12 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_checkout'])) 
     // Move books to "Borrowed Books" and update stock
     while ($row = $result->fetch_assoc()) {
         $book_id = $row['book_id'];
-        $quantity = $row['quantity'];
 
         // Insert into borrowed_books
-        $insertQuery = "INSERT INTO borrowed_books (user_id, book_id, quantity, borrow_date) VALUES (?, ?, ?, NOW())";
+        $insertQuery = "INSERT INTO borrowed_books (user_id, book_id, borrow_date) VALUES (?, ?, NOW())";
         $insertStmt = $conn->prepare($insertQuery);
-        $insertStmt->bind_param("iii", $user_id, $book_id, $quantity);
+        $insertStmt->bind_param("ii", $user_id, $book_id);
         $insertStmt->execute();
 
         // Deduct stock from books table
