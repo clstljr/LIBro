@@ -43,6 +43,7 @@
                           <div class="book-info">
                               <h4><?php echo htmlspecialchars($book['title']); ?></h4>
                               <p><?php echo htmlspecialchars($book['author']); ?></p>
+                              <div class="description">Description: <?php echo htmlspecialchars($book['description']); ?></div>
                               <div class="stock">Stock: <?php echo htmlspecialchars($book['stock']); ?></div>
                               <form action="../../include/borrower/borrowBook.php" method="POST">
                                   <input type="hidden" name="book_id" value="<?php echo htmlspecialchars($book['id']); ?>">
