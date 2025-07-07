@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/../db_connection.php'; // Use __DIR__ to ensure the correct path
+include __DIR__ . '/../db_connection.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title']);

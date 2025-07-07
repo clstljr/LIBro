@@ -1,6 +1,6 @@
 <?php
 session_start();
-include __DIR__ . '/../db_connection.php'; // Use __DIR__ to ensure the correct path
+include __DIR__ . '/../db_connection.php';
 
 // Fetch available books grouped by category
 $query = "SELECT * FROM books WHERE stock > 0 ORDER BY category, title";

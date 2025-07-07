@@ -1,6 +1,6 @@
 <?php
 session_start();
-session_destroy(); // Destroy all session data
+session_destroy();
 header("Location: ../pages/loginPage.php?message=You have been logged out.");
 exit;
 ?>

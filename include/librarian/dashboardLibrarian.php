@@ -1,6 +1,6 @@
 <?php
 session_start();
-include __DIR__ . '/../db_connection.php'; // Use __DIR__ to ensure the correct path
+include __DIR__ . '/../db_connection.php'; 
 
 // Fetch borrowed books
 $query = "SELECT borrowed_books.id, borrowed_books.book_id, books.title, users.first_name, users.last_name, borrowed_books.borrow_date 
