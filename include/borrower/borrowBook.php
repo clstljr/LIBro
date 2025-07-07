@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     } else {
         // Insert the book into "My Shelf" with a quantity of 1
-        $insertQuery = "INSERT INTO my_shelf (user_id, book_id, quantity) VALUES (?, ?, 1)";
+        $insertQuery = "INSERT INTO my_shelf (user_id, book_id) VALUES (?, ?)";
         $insertStmt = $conn->prepare($insertQuery);
         $insertStmt->bind_param("ii", $user_id, $book_id);
         if ($insertStmt->execute()) {

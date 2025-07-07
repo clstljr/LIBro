@@ -23,7 +23,7 @@ if (!$user) {
 }
 
 // Fetch books from "My Shelf" (cart)
-$cartQuery = "SELECT books.title, books.image, books.author, my_shelf.quantity 
+$cartQuery = "SELECT books.title, books.image, books.author, books.description 
               FROM my_shelf 
               JOIN books ON my_shelf.book_id = books.id 
               WHERE my_shelf.user_id = ?";

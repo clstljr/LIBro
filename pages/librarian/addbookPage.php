@@ -28,6 +28,7 @@
 
       
         <li><a href="addbookPage.php" class="sidebar-link<?php if(basename($_SERVER['PHP_SELF']) == 'addbookPage.php') echo ' active'; ?>"><i class="fa-solid fa-plus"></i> Add Book</a></li>
+        <li><a href="listBooksPage.php" class="sidebar-link<?php if(basename($_SERVER['PHP_SELF']) == 'listBooksPage.php') echo ' active'; ?>"> <i class="fas fa-book"></i> Book List</a></li>
         <li><a href="addlibrarianPage.php" class="sidebar-link<?php if(basename($_SERVER['PHP_SELF']) == 'addlibrarianPage.php'); ?>"><i class="fa-solid fa-user-plus"></i> Add Librarian</a></li>
         <li><a href="../../include/logout.php" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
       </ul>
