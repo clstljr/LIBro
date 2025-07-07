@@ -30,6 +30,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"],
+select,
 textarea {
     width: 100%;
     padding: 10px 12px;
@@ -39,12 +40,15 @@ textarea {
     font-size: 16px;
     resize: vertical;
     transition: border-color 0.3s ease;
+    background: #fff;
+    box-sizing: border-box;
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="number"]:focus,
+select:focus,
 textarea:focus {
     border-color: #4CAF50;
     outline: none;
