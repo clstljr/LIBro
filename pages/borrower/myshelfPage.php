@@ -38,7 +38,7 @@
             <div class="book-info">
               <h4><?php echo htmlspecialchars($book['title']); ?></h4>
               <p><?php echo htmlspecialchars($book['author']); ?></p>
-              <div class="stock">Quantity: <?php echo htmlspecialchars($book['quantity']); ?></div>
+              <div class="stock">Description: <?php echo htmlspecialchars($book['description']); ?></div>
               <div style="display:flex; gap:12px; margin-top:10px;">
                 <form action="../../include/borrower/removeFromShelf.php" method="POST" style="margin:0;">
                   <input type="hidden" name="book_id" value="<?php echo htmlspecialchars($book['book_id']); ?>">

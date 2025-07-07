@@ -38,7 +38,7 @@
             <div class="book-info">
               <h4><?php echo htmlspecialchars($book['title']); ?></h4>
               <p><?php echo htmlspecialchars($book['author']); ?></p>
-              <div class="stock">Quantity: <?php echo htmlspecialchars($book['quantity']); ?></div>
+              <div class="description">Description: <?php echo htmlspecialchars($book['description']); ?></div>
             </div>
           </div>
         <?php } ?>

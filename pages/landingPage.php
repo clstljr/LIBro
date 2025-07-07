@@ -98,7 +98,7 @@
         }
         ?>
         <!-- Link Browse Books to the #book section -->
-        <button><a href="loginPage.php">Browse Books</a></button>
+        <button><a href="loginPage.php" style="color:white;">BROWSE BOOKS</a></button>
       </div>
     </div>
   </section>
