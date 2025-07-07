@@ -1,5 +1,5 @@
 <?php
-include 'db_connection.php';
+include '../db_connection.php'; // Adjust path if needed
 $regionCode = $_GET['region'] ?? '';
 $options = '<option value="">Select Province</option>';
 if ($regionCode) {

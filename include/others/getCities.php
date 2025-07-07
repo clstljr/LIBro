@@ -1,5 +1,5 @@
 <?php
-include 'db_connection.php';
+include '../db_connection.php';
 $provinceCode = $_GET['province'] ?? '';
 $options = '<option value="">Select City</option>';
 if ($provinceCode) {
