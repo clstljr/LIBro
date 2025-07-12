@@ -18,6 +18,7 @@
         <span>LIbro</span>
       </div>
       <ul class="sidebar-links">
+        <li><a href="dashboardBorrowerPage.php"><i class="fa-solid fa-book"></i> Dashboard</a></li>
         <li><a href="myshelfPage.php"><i class="fa-solid fa-book"></i> My Shelf</a></li>
         <li><a href="rules.php" class="active"><i class="fa-solid fa-gavel"></i> Rules</a></li>
         <li><a href="../../include/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>

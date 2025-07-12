@@ -23,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_checkout'])) 
         $insertStmt->execute();
 
         // Deduct stock from books table
-        $updateStockQuery = "UPDATE books SET stock = stock - ? WHERE id = ?";
+        $updateStockQuery = "UPDATE books SET stock = stock - 1 WHERE id = ?";
         $updateStockStmt = $conn->prepare($updateStockQuery);
-        $updateStockStmt->bind_param("ii", $quantity, $book_id);
+        $updateStockStmt->bind_param("i", $book_id);
         $updateStockStmt->execute();
     }
 

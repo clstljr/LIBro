@@ -57,6 +57,7 @@ $result = $conn->query($query);
       <thead style="background:#f3f0fd; color:#6c5dd4;">
         <tr style="background:#f3f0fd;">
           <th style="padding:16px 8px; border:1px solid #ccc;">ID</th>
+          <th style="padding:16px 8px; border:1px solid #ccc;">Image</th> <!-- Add this line -->
           <th style="padding:16px 8px; border:1px solid #ccc;">Title</th>
           <th style="padding:16px 8px; border:1px solid #ccc;">Author</th>
           <th style="padding:16px 8px; border:1px solid #ccc;">Description</th>
@@ -69,6 +70,9 @@ $result = $conn->query($query);
         <?php while ($book = $result->fetch_assoc()) { ?>
           <tr style="text-align:center;">
             <td style="padding:16px 8px; border:1px solid #ccc;"><?php echo htmlspecialchars($book['id']); ?></td>
+            <td style="padding:16px 8px; border:1px solid #ccc;">
+              <img src="../../uploads/<?php echo htmlspecialchars($book['image']); ?>" alt="Book Cover" style="width:60px; height:90px; object-fit:cover; border-radius:6px;">
+            </td>
             <td style="padding:16px 8px; border:1px solid #ccc;"><?php echo htmlspecialchars($book['title']); ?></td>
             <td style="padding:16px 8px; border:1px solid #ccc;"><?php echo htmlspecialchars($book['author']); ?></td>
             <td style="padding:16px 8px; border:1px solid #ccc;"><?php echo htmlspecialchars($book['description']); ?></td>

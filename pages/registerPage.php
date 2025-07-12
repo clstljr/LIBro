@@ -203,7 +203,7 @@ document.getElementById('region').addEventListener('change', function() {
     citySelect.disabled = true;
     barangaySelect.disabled = true;
     if(region) {
-        fetch('../include/getProvinces.php?region=' + region)
+        fetch('../include/others/getProvinces.php?region=' + region)
             .then(response => response.text())
             .then(data => {
                 provinceSelect.innerHTML = data;
@@ -222,7 +222,7 @@ document.getElementById('province').addEventListener('change', function() {
     barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
     barangaySelect.disabled = true;
     if(province) {
-        fetch('../include/getCities.php?province=' + province)
+        fetch('../include/others/getCities.php?province=' + province)
             .then(response => response.text())
             .then(data => {
                 citySelect.innerHTML = data;
@@ -238,7 +238,7 @@ document.getElementById('city').addEventListener('change', function() {
     let barangaySelect = document.getElementById('barangay');
     barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
     if(city) {
-        fetch('../include/getBarangays.php?city=' + city)
+        fetch('../include/others/getBarangays.php?city=' + city)
             .then(response => response.text())
             .then(data => {
                 barangaySelect.innerHTML = data;

@@ -1,5 +1,5 @@
 <?php
-include 'db_connection.php';
+include '../db_connection.php';
 $cityCode = $_GET['city'] ?? '';
 $options = '<option value="">Select Barangay</option>';
 if ($cityCode) {

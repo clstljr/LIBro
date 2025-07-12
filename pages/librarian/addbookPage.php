@@ -24,13 +24,11 @@
         <span>LIbro</span>
       </div>
       <ul class="sidebar-links">
-        <li><a href="dashboardLibrarianPage.php" class="sidebar-link<?php if(basename($_SERVER['PHP_SELF']) == 'dashboardLibrarianPage.php') ?>"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
-
-      
-        <li><a href="addbookPage.php" class="sidebar-link<?php if(basename($_SERVER['PHP_SELF']) == 'addbookPage.php') echo ' active'; ?>"><i class="fa-solid fa-plus"></i> Add Book</a></li>
-        <li><a href="listBooksPage.php" class="sidebar-link<?php if(basename($_SERVER['PHP_SELF']) == 'listBooksPage.php') echo ' active'; ?>"> <i class="fas fa-book"></i> Book List</a></li>
-        <li><a href="addlibrarianPage.php" class="sidebar-link<?php if(basename($_SERVER['PHP_SELF']) == 'addlibrarianPage.php'); ?>"><i class="fa-solid fa-user-plus"></i> Add Librarian</a></li>
-        <li><a href="../../include/logout.php" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        <li><a href="dashboardLibrarianPage.php" ><i class="fa-solid fa-book"></i> Dashboard</a></li>
+        <li><a href="addbookPage.php" class="active"><i class="fa-solid fa-plus"></i> Add Book</a></li>
+        <li><a href="listBooksPage.php" > <i class="fas fa-book"></i> Book List</a></li>
+        <li><a href="addlibrarianPage.php" ><i class="fa-solid fa-user-plus"></i> Add Librarian</a></li>
+        <li><a href="../../include/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
       </ul>
     </aside>
     <main class="main-section">
@@ -45,15 +43,6 @@
           echo '<p class="success" style="color:green; text-align:center;">' . htmlspecialchars($_GET['message']) . '</p>';
       }
       ?>
-
-    <?php
-    if (isset($_GET['error'])) {
-        echo '<p class="error">' . htmlspecialchars($_GET['error']) . '</p>';
-    }
-    if (isset($_GET['message'])) {
-        echo '<p class="success">' . htmlspecialchars($_GET['message']) . '</p>';
-    }
-    ?>
     
     <div class="control-panel">
       <h4>Add Book</h4>
@@ -130,23 +119,29 @@
   display: flex;
   flex-direction: row;
   gap: 40px;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: stretch;
+  justify-content: center;
   width: 100%;
-  margin-top: 1.5rem;
-  flex-wrap: nowrap;
+  margin: 0 auto;
+  margin-top: 2.5rem;
+  max-width: 950px;
+}
+.book-cover-img,
+.book-item {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(108,93,212,0.07);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 300px;
 }
 .book-cover-img {
   max-width: 340px;
   min-width: 260px;
   flex: 0 0 260px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(108,93,212,0.07);
-  padding: 32px 24px;
+  justify-content: center;
 }
 .book-cover-img img {
   width: 180px;
@@ -164,12 +159,15 @@
 }
 .book-item {
   flex: 1;
-  min-width: 320px;
-  max-width: 600px;
+  width: 500px; /* or any value you prefer */
+  max-width: 100%;
+  align-items: flex-start;
+  justify-content: left;
 }
 .book-item h4 {
   margin-bottom: 1.5rem;
   color: #6c5dd4;
+  align-self: flex-start;
 }
 .input-form {
   display: flex;
