@@ -29,18 +29,19 @@
         <li><a href="../../include/logout.php" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
       </ul>
     </aside>
-    <main class="main-section" style="flex:1; padding:2.5rem 2.5rem 2.5rem 2rem; background:#faf9fb; min-height:100vh;">
-      <h2 style="color:#6c5dd4; margin-left: 250px; font-size:2rem; font-weight:700; margin-bottom:2rem;">Borrowed Books</h2>
+    <main class="main-section" style="flex:1; padding:2.5rem 2.5rem 2.5rem 4rem; background:#faf9fb; min-height:100vh;">
+      <h2 style="color:#6c5dd4; font-size:2rem; font-weight:700; margin-bottom:2rem; margin-left:170px;">Borrowed Books</h2>
       <?php if (isset($_GET['message'])) { ?>
         <p style="color: green; text-align: center;"><?php echo htmlspecialchars($_GET['message']); ?></p>
       <?php } ?>
       <?php if (isset($_GET['error'])) { ?>
         <p style="color: red; text-align: center;"><?php echo htmlspecialchars($_GET['error']); ?></p>
       <?php } ?>
-      <div style="overflow-x:auto; display:flex; justify-content:center;">
-      <table style="width:80%; max-width:800px; margin:0 auto; background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(108,93,212,0.07); border-collapse:separate; border-spacing:0;">
+      <div style="overflow-x:auto; display:flex; justify-content:flex-end;">
+      <table style="width:88%; background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(108,93,212,0.07); border-collapse:separate; border-spacing:0;">
         <thead style="background:#f3f0fd; color:#6c5dd4;">
             <tr>
+                <th style="padding:16px 8px;">Cover</th> <!-- Add this line -->
                 <th style="padding:16px 8px;">Title</th>
                 <th>Borrower</th>
                 <th>Borrow Date</th>
@@ -50,6 +51,9 @@
         <tbody>
             <?php while ($row = $result->fetch_assoc()) { ?>
                 <tr style="text-align:center; border-bottom:1px solid #f0f0f0;">
+                    <td style="padding:12px 8px;">
+                        <img src="../../uploads/<?php echo htmlspecialchars($row['image']); ?>" alt="Book Cover" style="width:60px; height:90px; object-fit:cover; border-radius:6px;">
+                    </td>
                     <td style="padding:12px 8px;"><?php echo htmlspecialchars($row['title']); ?></td>
                     <td><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['last_name']); ?></td>
                     <td><?php echo htmlspecialchars($row['borrow_date']); ?></td>
@@ -57,7 +61,7 @@
                         <form action="../../include/librarian/returnBook.php" method="POST" style="display: inline;">
                             <input type="hidden" name="borrow_id" value="<?php echo htmlspecialchars($row['id']); ?>">
                             <input type="hidden" name="book_id" value="<?php echo htmlspecialchars($row['book_id']); ?>">
-                            <button type="submit" style="background-color: #6c5dd4; color: white; border: none; padding: 7px 16px; border-radius:6px; cursor: pointer; font-weight:600;">Return</button>
+                            <button type="submit" style="background-color: #6c5dd4; color: white; border: none; padding: 7px 16px; border-radius:6px; cursor: pointer; font-weight:600; width:120px;">Return</button>
                         </form>
                     </td>
                 </tr>

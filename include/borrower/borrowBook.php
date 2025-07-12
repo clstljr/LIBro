@@ -13,12 +13,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
+    // Check if the book is already borrowed and not yet returned
+    $borrowedQuery = "SELECT * FROM borrowed_books WHERE user_id = ? AND book_id = ? AND status = 'borrowed'";
+    $borrowedStmt = $conn->prepare($borrowedQuery);
+    $borrowedStmt->bind_param("ii", $user_id, $book_id);
+    $borrowedStmt->execute();
+    $borrowedResult = $borrowedStmt->get_result();
+
+    if ($result->num_rows > 0 || $borrowedResult->num_rows > 0) {
         // Redirect back with an error message
-        header("Location: ../../pages/borrower/dashboardBorrowerPage.php?error=You can only borrow one copy of each book.");
+        header("Location: ../../pages/borrower/dashboardBorrowerPage.php");
         exit;
     } else {
-        // Insert the book into "My Shelf" with a quantity of 1
+        // Insert the book into "My Shelf"
         $insertQuery = "INSERT INTO my_shelf (user_id, book_id) VALUES (?, ?)";
         $insertStmt = $conn->prepare($insertQuery);
         $insertStmt->bind_param("ii", $user_id, $book_id);
