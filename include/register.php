@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
     $phone = trim($_POST['phone']);
-    $type = 'borrower'; // Default account type is borrower
+    $type = 'borrower'; 
 
     $regionCode = $_POST['region'];
     $provinceCode = $_POST['province'];
